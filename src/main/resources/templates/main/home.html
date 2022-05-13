@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://thymeLeafe.org">
+
+<!-- this imports the headers from layout to reduce on boiler plate code-->
+<head th:replace="layouts :: header"></head>
+
+<body>
+	<!-- This allows you to do a layout that can be reused on the different html pages -->
+	<nav th:replace="layouts :: navBar"></nav>
+
+	<br>
+	<br>
+
+	<h3>Main Dashboard</h3>
+	<br>
+	<div class="container">
+		<h4>Current Projects</h4>
+		<hr>
+		<div class="row">
+			<div class="col-md-6">
+				<table class="table table-bordered table-striped">
+					<thead class="thead-dark">
+						<tr>
+							<th>Project Name</th>
+							<th>Progress</th>
+						</tr>
+					</thead>
+
+					<tbody>
+						<tr th:each="aProject : ${projectsList}">
+							<td th:text="${aProject.name}">
+							<td th:text="${aProject.progress}">
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="col-md-4">
+				<canvas id="myPieChart" height="50" width="50"></canvas>
+				<script >
+				// have to use the use the "[[${varible}]]" to be able to use the variable from thymeleafe to JS
+				   var chartData = "[[${projectStatusCnt}]]"
+				</script>
+			</div>
+		</div>
+
+
+	</div>
+
+	<br>
+	<div class="container">
+		<h4>Current Employees</h4>
+		<hr>
+		<div class="row">
+			<div class="col-md-6">
+				<table class="table table-striped table-bordered">
+					<thead class="thead-dark">
+						<tr>
+							<th>First Name</th>
+							<th>Last Name</th>
+							<th>Project Count</th>
+						</tr>
+					</thead>
+
+					<tbody>
+						<tr th:each="anEmployeeProjectCnt : ${employeesListProjectsCnt}">
+							<td th:text="${anEmployeeProjectCnt.firstName}">
+							<td th:text="${anEmployeeProjectCnt.lastName}">
+							<td th:text="${anEmployeeProjectCnt.projectCount}">
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+	<!-- always put your JS at the end of your html -->
+	<script type="text/javascript" th:src="@{js/myChart.js}"></script>
+
+</body>
+</html>

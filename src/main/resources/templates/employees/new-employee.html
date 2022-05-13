@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://thymeLeafe.org">
+
+<head th:replace ="layouts :: header"></head>
+
+
+<body>
+  
+   <!-- This allows you to do a layout that can be reused on the different html pages -->
+   <nav th:replace ="layouts :: navBar"></nav> 
+   
+   <div class = "container">
+                                  <!-- th:object must be referenced in the controller -->
+      <form action= "/employees/save" th:object ="${employee}"  method = "POST">
+                                                      <!-- th:field must match model object -->
+         <input type = "text" placeholder = "First Name" th:field = "${employee.firstName}">
+         <br>
+         <input type = "text" placeholder = "Last Name" th:field = "${employee.lastName}">
+         <br>
+         <input type = "text" placeholder = "Email Address" th:field = "${employee.email}">
+          <br>
+         <button type = "submit">Enter Employee</button>
+      </form>
+   </div>  
+   
+
+</body>
+</html>
