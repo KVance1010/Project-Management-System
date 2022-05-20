@@ -15,37 +15,14 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
 @Entity  // tells spring that this should be saved in the database as a table
 @Table(name = "project") // this is used for naming the table and is not required
 public class Project {
 	
-	
-
-	public Project() {
-		super();
-	}
-
-	public Project(String name, String progress, String description, List<Employee> employees) {
-		super();
-		this.name = name;
-		this.progress = progress;
-		this.description = description;
-		this.employees = employees;
-	}
-
-	
-
-	public Project(String name, String progress, String description) {
-		super();
-		this.name = name;
-		this.progress = progress;
-		this.description = description;
-	}
-
-
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY) 
 	//@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "project_seq")
