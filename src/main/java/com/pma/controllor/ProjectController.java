@@ -35,7 +35,7 @@ public class ProjectController {
 	}
 	
 	@PostMapping("/save")
-	public String createProject(Project project,Model model) { //,@RequestParam List<Long> employees){ no longer need this. only for one to many
+	public String createProject(Project project, Model model) { //,@RequestParam List<Long> employees){ no longer need this. only for one to many
 		projRep.save(project);
 
 		
